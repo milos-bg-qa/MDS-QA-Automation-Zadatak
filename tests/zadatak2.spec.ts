@@ -91,11 +91,14 @@ test('Attempt to create a device type with an invalid U height (entering 0 as a 
     await page.locator(`[data-value="11"]`).click();
     await page.fill('#id_model', modelName);
     await page.fill('#id_slug', slugName);
-
     await page.fill('#id_u_height', '0');
-    await page.click('button[name="_create"]'); 
+    await page.click('button[name="_create"]');
     
-    await page.waitForSelector('table', { timeout: 10000 });
+    const toastLocator = page.locator('.toast.toast-dark');
+    await toastLocator.waitFor({ state: 'visible', timeout: 5000 });
+    await toastLocator.locator('.btn-close').click();
+    
+    await page.goto('https://demo.netbox.dev/dcim/device-types/');
     await expect(page.locator('table')).toContainText(modelName);
 });
 
