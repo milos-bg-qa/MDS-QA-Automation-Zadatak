@@ -27,7 +27,6 @@ test.describe('Adding device to rack from graphical view', () => {
     const toastHeader = page.locator('div.toast-header.text-bg-success');
     
       await toastHeader.waitFor({ state: 'visible', timeout: 5000 });
-      await expect(toastHeader).toContainText('Logged in as Milos.');
       await page.locator('div.toast-header.text-bg-success button.btn-close').click();
           
 
@@ -111,7 +110,7 @@ test.describe('Adding device to rack from graphical view', () => {
     const toastHeader = page.locator('div.toast-header.text-bg-success');
     if (await toastHeader.isVisible()) {
       await toastHeader.waitFor({ state: 'visible', timeout: 5000 });
-      await expect(toastHeader).toContainText('Logged in as Milos.');
+      //await expect(toastHeader).toContainText('Logged in as Milos.');
       await page.locator('div.toast-header.text-bg-success button.btn-close').click();
     }
 

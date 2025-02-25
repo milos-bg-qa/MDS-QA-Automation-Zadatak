@@ -13,6 +13,8 @@ test.describe('Login tests', () => {
     await page.locator('#id_username').fill('Milos');
     await page.locator('#id_password').fill('Marunic');
     await page.locator('[class="btn btn-primary w-100 mt-4"]').click();
+    const toastLocator = page.locator('.toast.toast-dark');
+    await expect(toastLocator.locator('.class="toast-header text-bg-success"'));
   });
 
   test('successfull login with valid credentials', async ({ page }) => {
